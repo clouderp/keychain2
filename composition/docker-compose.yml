@@ -1,0 +1,26 @@
+version: '2.4'
+services:
+
+  web-test:
+    image: cerp/odoo:testing-${ODOO_VERSION}
+    depends_on:
+      test-db:
+        condition: service_healthy
+    volumes:
+      - ${PWD}/addons:/mnt/addons
+      - ${PWD}/coverage:/mnt/coverage
+    command: runtests
+
+  test-db:
+    image: postgres:10
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+    volumes:
+      - ${PWD}/testdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
