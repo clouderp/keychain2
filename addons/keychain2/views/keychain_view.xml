@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record
+      model="ir.ui.view"
+      id="keychain2_account_id">
+    <field name="model">keychain2.account</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="namespace"/>
+      </tree>
+    </field>
+  </record>
+
+  <record
+      model="ir.ui.view"
+      id="keychain2_account_form">
+    <field name="model">keychain2.account</field>
+    <field name="arch" type="xml">
+      <form>
+        <group>
+          <field name="namespace" />
+          <field
+	      name="credentials_input"
+	      class="oe_edit_only" />
+        </group>
+      </form>
+    </field>
+  </record>
+
+  <record
+      model="ir.actions.act_window"
+      id="keychain2_list_action">
+    <field name="type">ir.actions.act_window</field>
+    <field name="name">Accounts</field>
+    <field name="res_model">keychain2.account</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem
+      id="keychain2_menu"
+      name="Keychain2"
+      parent="base.menu_custom"
+      action="keychain2_list_action"/>
+</odoo>
