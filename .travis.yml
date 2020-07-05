@@ -1,0 +1,18 @@
+# https://travis-ci.org/#!/clouderp/keychain2
+
+dist: bionic
+
+env:
+  jobs:
+    - ODOO_VERSION=11
+    - ODOO_VERSION=12
+    - ODOO_VERSION=13
+
+install:
+  - mkdir coverage
+  - chmod 777 coverage
+
+script:
+  - export COMPOSE_FILE=./example/docker-compose.yml
+  - export ci_env=`bash <(curl -s https://codecov.io/env)`
+  - docker-compose run $ci_env --rm web-test runtests keychain2
