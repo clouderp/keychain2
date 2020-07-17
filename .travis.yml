@@ -13,6 +13,6 @@ install:
   - chmod 777 coverage
 
 script:
-  - export COMPOSE_FILE=./example/docker-compose.yml
+  - export COMPOSE_FILE=./composition/docker-compose.yml
   - export ci_env=`bash <(curl -s https://codecov.io/env)`
   - docker-compose run $ci_env --rm web-test runtests keychain2
