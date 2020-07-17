@@ -1,0 +1,17 @@
+{
+    "assets": [{
+	"config": "dist/tmp/cerp/templates/icon/config.json",
+	"extra": [
+	    "dist/tmp/cerp/templates/icon/*svg"
+	],
+	"modules": [
+	    "addons/*"
+	]
+    }],
+    "release": [{
+	"repo": "git@github.com:clouderp/odoo-keychain2",
+	"modules": [
+	    "addons/keychain2"
+	]
+    }]
+}
